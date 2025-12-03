@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Cinzel } from "next/font/google";
 import "./globals.css";
-import BackgroundMusic from "./components/BackgroundMusic";
+import { MusicProvider } from "./components/MusicContext";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -30,8 +30,9 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${cinzel.variable} antialiased font-sans`}
       >
-        <BackgroundMusic />
-        {children}
+        <MusicProvider>
+          {children}
+        </MusicProvider>
       </body>
     </html>
   );

@@ -1,13 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles, Heart, Music } from 'lucide-react';
+import { useMusic } from './MusicContext';
 
 interface LandingProps {
     onNext: () => void;
 }
 
 export default function Landing({ onNext }: LandingProps) {
+    const { play, isPlaying } = useMusic();
+
+    const handlePlayMusic = () => {
+        play();
+    };
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-purple-950 to-black p-6 text-center overflow-hidden relative">
             {/* Floating background elements */}
@@ -46,6 +53,21 @@ export default function Landing({ onNext }: LandingProps) {
                         because you are. ✨
                     </p>
                 </div>
+
+                {!isPlaying && (
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handlePlayMusic}
+                        className="mt-6 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-lg font-bold rounded-full shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2 mx-auto"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                    >
+                        <Music size={20} />
+                        Play Music 🎵
+                    </motion.button>
+                )}
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}
