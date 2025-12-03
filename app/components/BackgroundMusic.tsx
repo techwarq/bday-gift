@@ -45,7 +45,7 @@ export default function BackgroundMusic() {
 
     return (
         <div className="fixed bottom-4 right-4 z-50">
-            <audio ref={audioRef} loop src="/srk2.mp3" />
+            <audio ref={audioRef} loop src="/srk3.mp3" />
             <button
                 onClick={togglePlay}
                 className="p-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white/20 transition-all shadow-lg"
